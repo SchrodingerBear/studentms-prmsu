@@ -8,7 +8,7 @@ if (isset($_GET['editid'])) {
   $editid = intval($_GET['editid']); // Get the edit ID from the URL
 
   // Prepare and execute the select query
-  $query = "SELECT * FROM tblviolations WHERE id = :editid";
+  $query = "SELECT * FROM violations WHERE id = :editid";
   $stmt = $dbh->prepare($query);
   $stmt->bindParam(':editid', $editid, PDO::PARAM_INT);
   $stmt->execute();
@@ -46,9 +46,9 @@ if (isset($_POST['submit'])) {
   $updateStmt->bindParam(':editid', $editid, PDO::PARAM_INT);
 
   try {
-        if ($updateStmt->execute() && $updateStmt->rowCount() > 0) {
-            // Success toast if rows were affected
-            echo "
+    if ($updateStmt->execute() && $updateStmt->rowCount() > 0) {
+      // Success toast if rows were affected
+      echo "
             <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
             <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'></script>
             <div class='toast-container position-fixed top-0 start-50 translate-middle-x p-3'>
@@ -63,10 +63,10 @@ if (isset($_POST['submit'])) {
                 updateSuccessToast.show();
             </script>
             ";
-        }
-    } catch (PDOException $e) {
-        // Error toast for database error
-        echo "
+    }
+  } catch (PDOException $e) {
+    // Error toast for database error
+    echo "
         <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
         <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'></script>
         <div class='toast-container position-fixed top-0 start-50 translate-middle-x p-3'>
@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
             errorToast.show();
         </script>
         ";
-    }
+  }
 }
 ?>
 
@@ -120,7 +120,7 @@ if (isset($_POST['submit'])) {
       <!-- Include sidebar here -->
       <!-- partial -->
       <div class="main-panel">
-        <div class="content-wrapper"style="background-color: #c71d68;">
+        <div class="content-wrapper" style="background-color: #c71d68;">
           <div class="page-header">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -148,31 +148,37 @@ if (isset($_POST['submit'])) {
                     <div class="form-group">
                       <label for="violation_type">Violation Type</label>
 
-                      <input type="text" name="violation_type" class="form-control custom-input" required style="border: 1px solid #acb7c2;"
+                      <input type="text" name="violation_type" class="form-control custom-input" required
+                        style="border: 1px solid #acb7c2;"
                         value="<?php echo htmlspecialchars($violation['violation_type']); ?>" required>
                     </div>
                     <div class="form-group">
                       <label for="description">Description</label>
-                      <textarea name="description" class="form-control custom-input" required style="border: 1px solid #acb7c2; outline: none;"><?php echo htmlspecialchars($violation['description']); ?></textarea>
+                      <textarea name="description" class="form-control custom-input" required
+                        style="border: 1px solid #acb7c2; outline: none;"><?php echo htmlspecialchars($violation['description']); ?></textarea>
                     </div>
                     <div class="form-group">
-  <label for="Sanction">Sanction</label>
-  <select name="Sanction" class="form-control custom-input" required style="border: 1px solid #acb7c2; outline: none;">
-    <option value="" disabled selected hidden>Select sanction</option> <!-- Placeholder -->
-    <option value="1" <?php echo ($violation['Sanction'] == '1') ? 'selected' : ''; ?>>1st Offense</option>
-    <option value="2" <?php echo ($violation['Sanction'] == '2') ? 'selected' : ''; ?>>2nd Offense</option>
-    <option value="3" <?php echo ($violation['Sanction'] == '3') ? 'selected' : ''; ?>>3rd Offense</option>
-  </select>
-</div>
+                      <label for="Sanction">Sanction</label>
+                      <select name="Sanction" class="form-control custom-input" required
+                        style="border: 1px solid #acb7c2; outline: none;">
+                        <option value="" disabled selected hidden>Select sanction</option> <!-- Placeholder -->
+                        <option value="1" <?php echo ($violation['Sanction'] == '1') ? 'selected' : ''; ?>>1st Offense
+                        </option>
+                        <option value="2" <?php echo ($violation['Sanction'] == '2') ? 'selected' : ''; ?>>2nd Offense
+                        </option>
+                        <option value="3" <?php echo ($violation['Sanction'] == '3') ? 'selected' : ''; ?>>3rd Offense
+                        </option>
+                      </select>
+                    </div>
                     <div class="form-group">
                       <label for="penalty">Penalty</label>
-                      <textarea id="penalty" name="penalty"
-                        class="form-control custom-input" required style="border: 1px solid #acb7c2; outline: none;"><?php echo htmlspecialchars($violation['penalty']); ?></textarea>
+                      <textarea id="penalty" name="penalty" class="form-control custom-input" required
+                        style="border: 1px solid #acb7c2; outline: none;"><?php echo htmlspecialchars($violation['penalty']); ?></textarea>
 
-                  
-                                        <div class="mt-4">
-                                            <button type="submit" class="custom-add-btn" name="submit">Update</button>
-                                        </div>
+
+                      <div class="mt-4">
+                        <button type="submit" class="custom-add-btn" name="submit">Update</button>
+                      </div>
                   </form>
                 </div>
               </div>
@@ -203,24 +209,24 @@ if (isset($_POST['submit'])) {
   <!-- End custom js for this page -->
 
 
-    <style>
-.custom-add-btn {
-    background-color: #1c82e6; 
-    color: #fff;  
-    border: none;
-    padding: 10px 50px; 
-    border-radius: 30px; 
-    font-weight: bold; 
-    font-size: 20px; 
-    transition: background-color 0.3s ease; 
-}
+  <style>
+    .custom-add-btn {
+      background-color: #1c82e6;
+      color: #fff;
+      border: none;
+      padding: 10px 50px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 20px;
+      transition: background-color 0.3s ease;
+    }
 
-.custom-add-btn:hover {
-    background-color: #155ba0;
-    color: #fff; 
-    cursor: pointer; 
-}
-   </style>
+    .custom-add-btn:hover {
+      background-color: #155ba0;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
 </body>
 
 </html>
