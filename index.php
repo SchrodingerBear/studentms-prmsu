@@ -4,35 +4,32 @@ error_reporting(0);
 include('includes/dbconnection.php');
 ?>
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="images/logo.png" type="image/png">
   <title>STUDENT HANDBOOK ASSISTANCE | Student Login</title>
-  <script
-    type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-  <!--bootstrap-->
+
+  <!-- Bootstrap CSS -->
   <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-  <!--coustom css-->
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <!--script-->
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+  <!-- jQuery and Bootstrap JS -->
   <script src="js/jquery-1.11.0.min.js"></script>
-  <!-- js -->
   <script src="js/bootstrap.js"></script>
-  <!-- /js -->
-  <!--fonts-->
+
+  <!-- Fonts and Icons -->
   <link
     href='//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400italic,400,600,600italic,700,700italic,800,800italic'
     rel='stylesheet' type='text/css'>
-  <!--/fonts-->
-  <!--hover-girds-->
-  <link rel="stylesheet" type="text/css" href="css/default.css" />
-  <link rel="stylesheet" type="text/css" href="css/component.css" />
+
+  <!-- Custom Script -->
   <script src="js/modernizr.custom.js"></script>
-  <!--/hover-grids-->
   <script type="text/javascript" src="js/move-top.js"></script>
   <script type="text/javascript" src="js/easing.js"></script>
-  <!--script-->
   <script type="text/javascript">
     jQuery(document).ready(function ($) {
       $(".scroll").click(function (event) {
@@ -41,92 +38,88 @@ include('includes/dbconnection.php');
       });
     });
   </script>
-  <!--/script-->
+
+  <style>
+    /* Custom Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    h3 {
+      color: #ff5733;
+    }
+
+    .slider h3 {
+      font-size: 1.5rem;
+    }
+
+    .readmore a {
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    @media (max-width: 576px) {
+      .slider h3 {
+        font-size: 1.2rem;
+      }
+
+      .readmore a {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <?php include_once('includes/header.php'); ?>
+
+  <!-- Banner Section -->
   <div class="banner">
     <div class="container">
-      <script src="js/responsiveslides.min.js"></script>
-      <script>
-        $(function () {
-          $("#slider").responsiveSlides({
-            auto: true,
-            nav: true,
-            speed: 500,
-            namespace: "callbacks",
-            pager: true,
-          });
-        });
-      </script>
       <div class="slider">
         <div class="callbacks_container">
           <ul class="rslides" id="slider">
             <li>
-              <style>
-        body {
-            font-family: 'Arial', sans-serif; /* Change to your desired font */
-            background-color: #f0f0f0; /* Change to your desired background color */
-        }
-
-        h3 {
-            color: #ff5733; /* Change to your desired text color */
-        }
-    </style>
-    
-              <h3>WEB-BASED STUDENT HANDBOOK ASSISTANCE</h3>
-             
-              <div class="readmore">
-                <a href="user/login.php">Student Login<i class="glyphicon glyphicon-menu-right"> </i></a>
+              <h3 class="text-center">WEB-BASED STUDENT HANDBOOK ASSISTANCE</h3>
+              <div class="readmore text-center mt-3">
+                <a href="user/login.php" class="btn btn-primary">Student Login <i
+                    class="glyphicon glyphicon-menu-right"> </i></a>
               </div>
             </li>
-
-
           </ul>
         </div>
       </div>
     </div>
   </div>
-  
-  <!--/welcome-->
 
-
-  <!--testmonials-->
-  <div class="testimonials">
+  <!-- Public Notices Section -->
+  <div class="testimonials py-5 bg-dark text-white">
     <div class="container">
       <div class="testimonial-nfo">
-        <h3>Public Notices</h3>
-        <marquee style="height:350px;" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
+        <h3 class="text-center mb-4">Public Notices</h3>
+        <div class="marquee" style="overflow-y: auto; max-height: 350px;">
           <?php
           $sql = "SELECT * from tblpublicnotice";
           $query = $dbh->prepare($sql);
           $query->execute();
           $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-          $cnt = 1;
           if ($query->rowCount() > 0) {
             foreach ($results as $row) { ?>
-
-
               <a href="view-public-notice.php?viewid=<?php echo htmlentities($row->ID); ?>" target="_blank"
-                style="color:#fff; font-size: 24px;">
-                <?php echo htmlentities($row->NoticeTitle); ?>(<?php echo htmlentities($row->CreationDate); ?>)</a>
-              <hr /><br />
-
-              <?php $cnt = $cnt + 1;
-            }
+                class="d-block text-white mb-2" style="font-size: 1.1rem;">
+                <?php echo htmlentities($row->NoticeTitle); ?> (<?php echo htmlentities($row->CreationDate); ?>)
+              </a>
+              <hr class="bg-light">
+            <?php }
           } ?>
-        </marquee>
+        </div>
       </div>
     </div>
   </div>
-  <!--\testmonials-->
-  <!--specfication-->
 
-  <!--/specfication-->
   <?php include_once('includes/footer.php'); ?>
-  <!--/copy-rights-->
 </body>
 
 </html>

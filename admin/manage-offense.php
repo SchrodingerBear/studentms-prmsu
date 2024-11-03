@@ -7,12 +7,13 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 } else {
   if (isset($_GET['delid'])) {
     $rid = intval($_GET['delid']);
+    echo $rid;
     $sql = "DELETE FROM tblviolations WHERE id = :rid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':rid', $rid, PDO::PARAM_INT);
     $query->execute();
     echo "<script>alert('Data deleted');</script>";
-    echo "<script>window.location.href = 'manage-violations.php'</script>";
+    echo "<script>window.location.href = 'manage-offense.php'</script>";
   }
   ?>
   <!DOCTYPE html>
@@ -47,25 +48,25 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <?php include_once('includes/sidebar.php'); ?>
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrapper"style="background-color: #c71d68;">
+          <div class="content-wrapper" style="background-color: #c71d68;">
             <div class="page-header">
-             
+
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                 
+
                 </ol>
               </nav>
             </div>
-               <div class="row">
-            <div class="col-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title" style="text-align: center;">Manage Offense</h4>
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title" style="text-align: center;">Manage Offense</h4>
 
                     <div class="table-responsive">
                       <!-- Search Bar -->
-                      <input style="border: 2px #a5a5a5 solid;" type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search"
-                        class="form-control mb-4 mt-4">
+                      <input style="border: 2px #a5a5a5 solid;" type="text" id="searchInput" onkeyup="filterTable()"
+                        placeholder="Search" class="form-control mb-4 mt-4">
 
                       <table class="table" id="table">
                         <thead>
@@ -127,9 +128,9 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                 </td>
                                 <td>
                                   <div>
-                                    <a href="edit-violation-detail.php?editid=<?php echo htmlentities($row->id); ?>"><i
+                                    <a href="edit-offense.php?editid=<?php echo htmlentities($row->id); ?>"><i
                                         class="icon-eye"></i></a>
-                                    || <a href="manage-violations.php?delid=<?php echo ($row->id); ?>"
+                                    || <a href="manage-offense.php?delid=<?php echo ($row->id); ?>"
                                       onclick="return confirm('Do you really want to Delete ?');"> <i
                                         class="icon-trash"></i></a>
                                   </div>
@@ -206,7 +207,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         }
       }
     </script>
-          <?php include_once('includes/footer.php'); ?>
+    <?php include_once('includes/footer.php'); ?>
 
   </body>
 
