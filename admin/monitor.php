@@ -5,16 +5,16 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     header('location:logout.php');
 } else {
 
-  if (isset($_GET['delid'])) {
-    $rid = intval($_GET['delid']);
-    $sql = "DELETE FROM tblviolations WHERE id = :rid";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':rid', $rid, PDO::PARAM_INT);
-    $query->execute();
-    echo "<script>alert('Data deleted');</script>";
-    echo "<script>window.location.href = 'manage-violations.php'</script>";
-  }
-  ?>
+    if (isset($_GET['delid'])) {
+        $rid = intval($_GET['delid']);
+        $sql = "DELETE FROM tblviolations WHERE id = :rid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':rid', $rid, PDO::PARAM_INT);
+        $query->execute();
+        echo "<script>alert('Data deleted');</script>";
+        echo "<script>window.location.href = 'manage-violations.php'</script>";
+    }
+    ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -37,7 +37,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
             <div class="container-fluid page-body-wrapper">
                 <?php include_once('includes/sidebar.php'); ?>
                 <div class="main-panel">
-                    <div class="content-wrapper"style="background-color: #c71d68;">
+                    <div class="content-wrapper" style="background-color: #c71d68;">
                         <div class="row">
                             <div class="col-12 grid-margin stretch-card">
                                 <div class="card">
@@ -45,15 +45,18 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                         <h4 class="card-title" style="text-align: center;">Monitor Online Students</h4>
 
                                         <!-- Print Button Container -->
-                                        <div class="print-button-container" style="position: absolute; top: 20px; right: 20px; text-align: right;">
+                                        <div class="print-button-container"
+                                            style="position: absolute; top: 20px; right: 20px; text-align: right;">
                                             <a href="javascript:void(0)" onclick="printSection()">
                                                 <i class="icon-printer" style="font-size: 24px;"></i> Print
                                             </a>
                                         </div>
 
                                         <!-- Search Bar -->
-                                        <input style="border: 2px #a5a5a5 solid;" type="text" id="searchInput" onkeyup="filterTable()" 
-                                        placeholder="Search for Students ID, Student Class, Student Name, Last Seen" class="form-control mb-3">        
+                                        <input style="border: 2px #a5a5a5 solid;" type="text" id="searchInput"
+                                            onkeyup="filterTable()"
+                                            placeholder="Search for Students ID, Student Class, Student Name, Last Seen"
+                                            class="form-control mb-3">
 
                                         <table class="table" id="table">
                                             <thead>
@@ -67,6 +70,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                                     <th class="font-weight-bold">Active</th>
                                                 </tr>
                                             </thead>
+
                                             <tbody>
                                                 <?php
                                                 if (isset($_GET['pageno'])) {
@@ -74,35 +78,43 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                                 } else {
                                                     $pageno = 1;
                                                 }
-                                                // Formula for pagination
                                                 $no_of_records_per_page = 10;
                                                 $offset = ($pageno - 1) * $no_of_records_per_page;
 
                                                 $ret = "SELECT ID FROM tblstudent";
                                                 $query1 = $dbh->prepare($ret);
                                                 $query1->execute();
-                                                $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
                                                 $total_rows = $query1->rowCount();
                                                 $total_pages = ceil($total_rows / $no_of_records_per_page);
 
                                                 $sql = "SELECT tblstudent.StuID, tblstudent.isReading, tblstudent.last_seen, tblstudent.ID as sid, tblstudent.StudentName, tblstudent.StudentEmail, tblstudent.DateofAdmission, tblclass.ClassName, tblclass.Section
-                                                    FROM tblstudent
-                                                    JOIN tblclass ON tblclass.ID = tblstudent.StudentClass";
+            FROM tblstudent
+            JOIN tblclass ON tblclass.ID = tblstudent.StudentClass
+            LIMIT $offset, $no_of_records_per_page";
                                                 $query = $dbh->prepare($sql);
                                                 $query->execute();
                                                 $results = $query->fetchAll(PDO::FETCH_OBJ);
 
                                                 $cnt = 1;
                                                 if ($query->rowCount() > 0) {
-                                                    foreach ($results as $row) { ?>
+                                                    foreach ($results as $row) {
+                                                        if ($row->isReading) {
+                                                            $updateLastSeen = "UPDATE tblstudent SET last_seen = NOW() WHERE ID = :sid";
+                                                            $updateQuery = $dbh->prepare($updateLastSeen);
+                                                            $updateQuery->bindParam(':sid', $row->sid, PDO::PARAM_INT);
+                                                            $updateQuery->execute();
+                                                        }
+                                                        ?>
                                                         <tr>
                                                             <td><?php echo htmlentities($cnt); ?></td>
                                                             <td><?php echo htmlentities($row->StuID); ?></td>
-                                                            <td><?php echo htmlentities($row->ClassName); ?> <?php echo htmlentities($row->Section); ?></td>
+                                                            <td><?php echo htmlentities($row->ClassName); ?>
+                                                                <?php echo htmlentities($row->Section); ?>
+                                                            </td>
                                                             <td><?php echo htmlentities($row->StudentName); ?></td>
                                                             <td><?php echo htmlentities($row->StudentEmail); ?></td>
                                                             <td>
-                                                                <?php 
+                                                                <?php
                                                                 $datetime = new DateTime($row->last_seen);
                                                                 $formattedDate = $datetime->format('F d, Y h:i A');
                                                                 echo $formattedDate;
@@ -132,10 +144,11 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                                                 ?>
                                                             </td>
                                                         </tr>
-                                                    <?php $cnt++;
+                                                        <?php $cnt++;
                                                     }
                                                 } ?>
                                             </tbody>
+
                                         </table>
                                     </div>
                                 </div>
@@ -181,7 +194,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
             // Function to print the section with title
             function printSection() {
                 var tableContent = document.getElementById("table").outerHTML;
-                var title = "<h4 style='text-align: center;'>Monitor Online Students</h4>"; 
+                var title = "<h4 style='text-align: center;'>Monitor Online Students</h4>";
                 var originalContent = document.body.innerHTML;
 
                 // Open a new window to hold the printable content
