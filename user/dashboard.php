@@ -12,7 +12,8 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
     <html lang="en">
 
     <head>
-
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="icon" href="../images/logo.png" type="image/png">
       <title>STUDENT HANDBOOK ASSISTANCE ||Dashboard</title>
       <!-- plugins:css -->
@@ -47,9 +48,9 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                 <div class="col-12 stretch-card grid-margin">
                   <div class="card card-secondary">
                     <span class="card-body d-lg-flex align-items-center">
-                      <p class="mb-lg-0">Notices from the school kindly check! </p>
-                      <a href="view-notice.php" target="_blank"
-                        class="btn btn-warning purchase-button btn-sm my-1 my-sm-0 ml-auto">View Notice</a>
+                      <p class="mb-lg-0">Announcements from the school kindly check! </p>
+                      <a href="view-Announcement.php" target="_blank"
+                        class="btn btn-warning purchase-button btn-sm my-1 my-sm-0 ml-auto">View Class Announcementcement</a>
 
                     </span>
                   </div>

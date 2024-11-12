@@ -207,7 +207,14 @@ class SMTP
      * @var array
      */
     public static $xclient_allowed_attributes = [
-        'NAME', 'ADDR', 'PORT', 'PROTO', 'HELO', 'LOGIN', 'DESTADDR', 'DESTPORT'
+        'NAME',
+        'ADDR',
+        'PORT',
+        'PROTO',
+        'HELO',
+        'LOGIN',
+        'DESTADDR',
+        'DESTPORT'
     ];
 
     /**
@@ -308,17 +315,17 @@ class SMTP
                 //Normalize line breaks
                 $str = preg_replace('/\r\n|\r/m', "\n", $str);
                 echo gmdate('Y-m-d H:i:s'),
-                "\t",
+                    "\t",
                     //Trim trailing space
-                trim(
-                    //Indent for readability, except for trailing break
-                    str_replace(
-                        "\n",
-                        "\n                   \t                  ",
-                        trim($str)
-                    )
-                ),
-                "\n";
+                    trim(
+                        //Indent for readability, except for trailing break
+                        str_replace(
+                            "\n",
+                            "\n                   \t                  ",
+                            trim($str)
+                        )
+                    ),
+                    "\n";
         }
     }
 
@@ -365,7 +372,7 @@ class SMTP
         //Get any announcement
         $this->last_reply = $this->get_lines();
         $this->edebug('SERVER -> CLIENT: ' . $this->last_reply, self::DEBUG_SERVER);
-        $responseCode = (int)substr($this->last_reply, 0, 3);
+        $responseCode = (int) substr($this->last_reply, 0, 3);
         if ($responseCode === 220) {
             return true;
         }
@@ -450,7 +457,7 @@ class SMTP
         //SMTP server can take longer to respond, give longer timeout for first read
         //Windows does not have support for this timeout function
         if (strpos(PHP_OS, 'WIN') !== 0) {
-            $max = (int)ini_get('max_execution_time');
+            $max = (int) ini_get('max_execution_time');
             //Don't bother if unlimited, or if set_time_limit is disabled
             if (0 !== $max && $timeout > $max && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
                 @set_time_limit($timeout);
@@ -680,7 +687,7 @@ class SMTP
             if ($sock_status['eof']) {
                 //The socket is valid but we are not connected
                 $this->edebug(
-                    'SMTP NOTICE: EOF caught while checking if connected',
+                    'SMTP Announcement: EOF caught while checking if connected',
                     self::DEBUG_CLIENT
                 );
                 $this->close();
@@ -1137,7 +1144,7 @@ class SMTP
     public function turn()
     {
         $this->setError('The SMTP TURN command is not implemented');
-        $this->edebug('SMTP NOTICE: ' . $this->error['error'], self::DEBUG_CLIENT);
+        $this->edebug('SMTP Announcement: ' . $this->error['error'], self::DEBUG_CLIENT);
 
         return false;
     }
@@ -1440,14 +1447,14 @@ class SMTP
      */
     protected function errorHandler($errno, $errmsg, $errfile = '', $errline = 0)
     {
-        $notice = 'Connection failed.';
+        $Announcement = 'Connection failed.';
         $this->setError(
-            $notice,
+            $Announcement,
             $errmsg,
             (string) $errno
         );
         $this->edebug(
-            "$notice Error #$errno: $errmsg [$errfile line $errline]",
+            "$Announcement Error #$errno: $errmsg [$errfile line $errline]",
             self::DEBUG_CONNECTION
         );
     }

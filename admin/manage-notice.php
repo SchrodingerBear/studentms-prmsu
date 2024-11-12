@@ -13,7 +13,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     $query->bindParam(':rid', $rid, PDO::PARAM_STR);
     $query->execute();
     echo "<script>alert('Data deleted');</script>";
-    echo "<script>window.location.href = 'manage-notice.php'</script>";
+    echo "<script>window.location.href = 'manage-Announcement.php'</script>";
 
 
   }
@@ -24,7 +24,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
   <head>
 
     <link rel="icon" href="../images/logo.png" type="image/png">
-    <title>STUDENT HANDBOOK ASSISTANCE ||Manage Notice</title>
+    <title>STUDENT HANDBOOK ASSISTANCE ||Manage Announcement</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -64,7 +64,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
              <div class="col-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title" style="text-align: center;">Manage Class Notice</h4>
+                      <h4 class="card-title" style="text-align: center;">Manage Class Announcementcement</h4>
                     
                     </div>
                     <div class="table-responsive border rounded p-1">
@@ -72,10 +72,10 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                         <thead>
                           <tr>
                             <th class="font-weight-bold">No</th>
-                            <th class="font-weight-bold">Notice Title</th>
+                            <th class="font-weight-bold">Announcementcement Title</th>
                             <th class="font-weight-bold">Class</th>
                             <th class="font-weight-bold">Section</th>
-                            <th class="font-weight-bold">Notice Date</th>
+                            <th class="font-weight-bold">Announcementcement Date</th>
                             <th class="font-weight-bold">Action</th>
 
                           </tr>
@@ -96,7 +96,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
                           $total_rows = $query1->rowCount();
                           $total_pages = ceil($total_rows / $no_of_records_per_page);
-                          $sql = "SELECT tblclass.ID,tblclass.ClassName,tblclass.Section,tblnotice.NoticeTitle,tblnotice.CreationDate,tblnotice.ClassId,tblnotice.ID as nid from tblnotice join tblclass on tblclass.ID=tblnotice.ClassId";
+                          $sql = "SELECT tblclass.ID,tblclass.ClassName,tblclass.Section,tblnotice.AnnouncementTitle,tblnotice.CreationDate,tblnotice.ClassId,tblnotice.ID as nid from tblnotice join tblclass on tblclass.ID=tblnotice.ClassId";
                           $query = $dbh->prepare($sql);
                           $query->execute();
                           $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -107,14 +107,14 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                               <tr>
 
                                 <td><?php echo htmlentities($cnt); ?></td>
-                                <td><?php echo htmlentities($row->NoticeTitle); ?></td>
+                                <td><?php echo htmlentities($row->AnnouncementTitle); ?></td>
                                 <td><?php echo htmlentities($row->ClassName); ?></td>
                                 <td><?php echo htmlentities($row->Section); ?></td>
                                 <td><?php echo htmlentities($row->CreationDate); ?></td>
                                 <td>
-                                  <div><a href="edit-notice-detail.php?editid=<?php echo htmlentities($row->ID); ?>"><i
+                                  <div><a href="edit-Announcement-detail.php?editid=<?php echo htmlentities($row->ID); ?>"><i
                                         class="icon-eye"></i></a>
-                                    || <a href="manage-notice.php?delid=<?php echo ($row->ID); ?>"
+                                    || <a href="manage-Announcement.php?delid=<?php echo ($row->ID); ?>"
                                       onclick="return confirm('Do you really want to Delete ?');"> <i
                                         class="icon-trash"></i></a></div>
                                 </td>

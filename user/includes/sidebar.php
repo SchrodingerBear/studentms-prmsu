@@ -1,7 +1,19 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar"style="background-color: #2f3d58;">
+<style>
+  .hidethis {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .hidethis {
+      display: block;
+    }
+  }
+</style>
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #2f3d58;">
   <ul class="nav">
     <li class="nav-item nav-profile">
-      <a href="#" class="nav-link">
+      <a href="student-profile.php" class="nav-link">
 
         <?php
         $uid = $_SESSION['sturecmsuid'];
@@ -29,17 +41,13 @@
       </a>
     </li>
     <li class="nav-item nav-category">
-      <span class="nav-link">Dashboard</span>
+      <span class="nav-link"></span>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="dashboard.php">
-        <span class="menu-title">Dashboard</span>
-        <i class="icon-screen-desktop menu-icon"></i>
-      </a>
+
     </li>
     <li class="nav-item">
       <a class="nav-link" href="view-notice.php">
-        <span class="menu-title">View Notice</span>
+        <span class="menu-title">Class Announcement</span>
         <i class="icon-book-open menu-icon"></i>
       </a>
     </li>
@@ -63,5 +71,25 @@
       </a>
     </li>
 
+    <li class="nav-item hidethis">
+      <a class="nav-link" href="student-profile.php">
+        <span class="menu-title">My Profile</span>
+        <i class="icon-user menu-icon"></i>
+      </a>
+    </li>
+
+    <li class="nav-item hidethis">
+      <a class="nav-link" href="change-password.php">
+        <span class="menu-title">Setting</span>
+        <i class="icon-energy menu-icon"></i>
+      </a>
+    </li>
+
+    <li class="nav-item hidethis">
+      <a class="nav-link" href="logout.php">
+        <span class="menu-title">Sign Out</span>
+        <i class="icon-power menu-icon"></i>
+      </a>
+    </li>
   </ul>
 </nav>

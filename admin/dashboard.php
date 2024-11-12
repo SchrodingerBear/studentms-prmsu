@@ -66,7 +66,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           ?>
                           <span class="report-title">Total Class</span>
                           <h4><?php echo htmlentities($totclass); ?></h4>
-                          <a href="manage-class.php"><span class="report-count"> View Classes</span></a>
+                          <a href="manage-class.php"><span class="report-count"> Announcements</span></a>
                         </div>
                         <div class="inner-card-icon bg-success">
                           <i class="icon-rocket"></i>
@@ -98,9 +98,9 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           $results3 = $query3->fetchAll(PDO::FETCH_OBJ);
                           $totnotice = $query3->rowCount();
                           ?>
-                          <span class="report-title">Total Class Notice</span>
+                          <span class="report-title">Total Class Announcementcement</span>
                           <h4><?php echo htmlentities($totnotice); ?></h4>
-                          <a href="manage-notice.php"><span class="report-count"> View Notices</span></a>
+                          <a href="manage-Announcement.php"><span class="report-count">Announcements</span></a>
                         </div>
                         <div class="inner-card-icon bg-warning">
                           <i class="icon-doc"></i>
@@ -115,9 +115,10 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                           $results4 = $query4->fetchAll(PDO::FETCH_OBJ);
                           $totpublicnotice = $query4->rowCount();
                           ?>
-                          <span class="report-title">Total Public Notice</span>
+                          <span class="report-title">Total Announcementcement</span>
                           <h4><?php echo htmlentities($totpublicnotice); ?></h4>
-                          <a href="manage-public-notice.php"><span class="report-count"> View Public Notices</span></a>
+                          <a href="manage-public-Announcement.php"><span class="report-count"> View
+                              Announcement</span></a>
                         </div>
                         <div class="inner-card-icon bg-primary">
                           <i class="icon-doc"></i>

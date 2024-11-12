@@ -116,7 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form class="form-section" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="stuname">Student Name</label>
-                <input type="text" name="stuname" id="stuname" class="form-control custom-input" required>
+                <input type="text" name="stuname" id="stuname" class="form-control custom-input" required
+                    placeholder="Full Name">
             </div>
             <div class="form-group">
                 <label for="stuemail">Student Email</label>
@@ -152,11 +153,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group">
                     <label for="dob">Date of Birth</label>
                     <input type="date" name="dob" id="dob" class="form-control custom-input" required>
+                    <script>
+                        document.getElementById("dob").addEventListener("change", function () {
+                            const dob = new Date(this.value);
+                            const today = new Date();
+                            const age = today.getFullYear() - dob.getFullYear();
+
+                            // Adjust age calculation for date of birth and current date comparison
+                            if (dob > today || age < 18) {
+                                alert("Please enter a valid date of birth (must be older than 17 years).");
+                                this.value = ""; // Clear the input field
+                            }
+                        });
+                    </script>
+
                 </div>
                 <div class="form-group">
                     <label for="altconnum">Student Contact Number</label>
                     <input type="text" name="altconnum" id="altconnum" class="form-control custom-input" required
-                        pattern="\d{11}" title="Contact number must be exactly 11 digits">
+                        value="63" pattern="^63\d{10}$" title="Contact number must start with 63 and have 11 digits">
+
                 </div>
                 <div class="form-group">
                     <label for="image">Student Photo</label>
@@ -164,23 +180,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
                 <h3 style="margin-top: 20px; color: #1c82e6;">Guardian's Details</h3>
+
                 <div class="form-group">
-                    <label for="fname">Father's Name</label>
-                    <input type="text" name="fname" id="fname" class="form-control custom-input">
-                </div>
-                <div class="form-group">
-                    <label for="mname">Mother's Name</label>
+                    <label for="mname">Guardian's Name</label>
                     <input type="text" name="mname" id="mname" class="form-control custom-input">
                 </div>
                 <div class="form-group">
                     <label for="connum">Contact Number</label>
-                    <input type="text" name="connum" id="connum" class="form-control custom-input" pattern="\d{11}"
-                        title="Contact number must be exactly 11 digits">
+                    <input type="text" name="connum" id="connum" class="form-control custom-input" pattern="^63\d{10}$"
+                        title="Contact number must start with 63 and have 11 digits" required
+                        placeholder="e.g., 639533180925">
+
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
                     <textarea name="address" id="address" class="form-control custom-input" required
-                        placeholder="purok/barangay/municipality/province"></textarea>
+                        placeholder="Purok/Barangay/Municipality/Province"></textarea>
                 </div>
 
                 <h3 style="margin-top: 20px; color: #1c82e6;">Login Details</h3>
@@ -190,7 +205,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control custom-input" required>
+                    <input type="password" name="password" id="password" class="form-control custom-input" required
+                        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$"
+                        title="Password must be at least 7 characters long and include at least one letter, one number, and one special character.">
+
                 </div>
                 <button type="submit" class="custom-add-btn">Register</button>
         </form>

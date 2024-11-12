@@ -16,7 +16,12 @@
   footer > p {
     margin: 0;
     font-size: 16px;
-    /* Removed white-space property to allow wrapping */
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      position: relative;
+    }
   }
 </style>
 <footer>

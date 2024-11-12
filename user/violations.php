@@ -14,8 +14,10 @@ echo updateIsReading($_SESSION['sturecmsuid'], false);
 <html lang="en">
 
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../images/logo.png" type="image/png">
-  <title>STUDENT HANDBOOK ASSISTANCE |View Notice</title>
+  <title>STUDENT HANDBOOK ASSISTANCE |View Announcement</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -53,7 +55,7 @@ echo updateIsReading($_SESSION['sturecmsuid'], false);
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <table border="1" class="table table-bordered mg-b-0">
+                  <table class="table table-responsive mg-b-0">
                     <thead>
                       <tr align="center" class="table-warning">
                         <th colspan="5" style="font-size:25px;color:#1c82e6;">Violations List</th>

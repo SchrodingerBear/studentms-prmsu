@@ -42,15 +42,17 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                             <div class="col-12 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title" style="text-align: center;">Monitor Online Students</h4>
+                                        <h4 class="card-title" style="text-align: center;">
+                                            Monitor Online Students
+                                         <span style="float: right; margin-right: 20px;">
+                                 <a href="javascript:void(0)" onclick="printSection()">
+                                     <i class="icon-printer" style="font-size: 24px;"></i> Print
+                                          </a>
+                                            </span>
 
-                                        <!-- Print Button Container -->
-                                        <div class="print-button-container"
-                                            style="position: absolute; top: 20px; right: 20px; text-align: right;">
-                                            <a href="javascript:void(0)" onclick="printSection()">
-                                                <i class="icon-printer" style="font-size: 24px;"></i> Print
-                                            </a>
-                                        </div>
+                                        </h4>
+
+                                       
 
                                         <!-- Search Bar -->
                                         <input style="border: 2px #a5a5a5 solid;" type="text" id="searchInput"
@@ -58,7 +60,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                                             placeholder="Search for Students ID, Student Class, Student Name, Last Seen"
                                             class="form-control mb-3">
 
-                                        <table class="table" id="table">
+                                        <table class="table table-responsive" id="table">
                                             <thead>
                                                 <tr>
                                                     <th class="font-weight-bold">No</th>

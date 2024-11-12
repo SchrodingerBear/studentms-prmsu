@@ -298,14 +298,9 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
 
                                             <h3>Guardian's details</h3>
+                                            
                                             <div class="form-group">
-                                                <label for="fname">Father's Name</label>
-                                                <input type="text" name="fname" id="fname"
-                                                    value="<?php echo htmlentities($student->FatherName); ?>"
-                                                    class="form-control custom-input">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="mname">Mother's Name</label>
+                                                <label for="mname">Guardian's Name</label>
                                                 <input type="text" name="mname" id="mname"
                                                     value="<?php echo htmlentities($student->MotherName); ?>"
                                                     class="form-control custom-input">

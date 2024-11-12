@@ -13,7 +13,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 
     <link rel="icon" href="../images/logo.png" type="image/png">
     <link rel="icon" href="../images/logo.png" type="image/png">
-    <title>STUDENT HANDBOOK ASSISTANCE | View Notice</title>
+    <title>STUDENT HANDBOOK ASSISTANCE | View Announcement</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">

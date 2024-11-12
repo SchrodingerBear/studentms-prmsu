@@ -216,7 +216,7 @@ if (isset($_POST['login'])) {
 
 <!-- Center the following content -->
 <div class="text-center">
-    <h3 class="mt-4">Admin Login</h3>
+    <h3 class="mt-4">Hello! Let's get started</h3>
     <h6 class="font-weight-light"></h6>
 </div>
 

@@ -95,9 +95,9 @@ INSERT INTO `tblclass` (`ID`, `ClassName`, `Section`, `CreationDate`) VALUES
 
 CREATE TABLE `tblnotice` (
   `ID` int(5) NOT NULL,
-  `NoticeTitle` mediumtext DEFAULT NULL,
+  `AnnouncementTitle` mediumtext DEFAULT NULL,
   `ClassId` int(10) DEFAULT NULL,
-  `NoticeMsg` mediumtext DEFAULT NULL,
+  `AnnouncementMsg` mediumtext DEFAULT NULL,
   `CreationDate` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -105,8 +105,8 @@ CREATE TABLE `tblnotice` (
 -- Dumping data for table `tblnotice`
 --
 
-INSERT INTO `tblnotice` (`ID`, `NoticeTitle`, `ClassId`, `NoticeMsg`, `CreationDate`) VALUES
-(8, 'Test Notice', 3, 'Test', '2024-09-03 05:55:11'),
+INSERT INTO `tblnotice` (`ID`, `AnnouncementTitle`, `ClassId`, `AnnouncementMsg`, `CreationDate`) VALUES
+(8, 'Test Announcement', 3, 'Test', '2024-09-03 05:55:11'),
 (9, 'New', 3, '123', '2024-09-03 05:55:46'),
 (10, 'Test', 1, 'te', '2024-09-06 08:29:34'),
 (11, 'TEST FOR BSMATH 3', 23, 'HELLO', '2024-09-26 00:43:04');
@@ -143,8 +143,8 @@ INSERT INTO `tblpage` (`ID`, `PageType`, `PageTitle`, `PageDescription`, `Email`
 
 CREATE TABLE `tblpublicnotice` (
   `ID` int(5) NOT NULL,
-  `NoticeTitle` varchar(200) DEFAULT NULL,
-  `NoticeMessage` mediumtext DEFAULT NULL,
+  `AnnouncementTitle` varchar(200) DEFAULT NULL,
+  `AnnouncementMessage` mediumtext DEFAULT NULL,
   `CreationDate` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -152,9 +152,9 @@ CREATE TABLE `tblpublicnotice` (
 -- Dumping data for table `tblpublicnotice`
 --
 
-INSERT INTO `tblpublicnotice` (`ID`, `NoticeTitle`, `NoticeMessage`, `CreationDate`) VALUES
+INSERT INTO `tblpublicnotice` (`ID`, `AnnouncementTitle`, `AnnouncementMessage`, `CreationDate`) VALUES
 (1, 'School will re-open', 'Consult your class teacher.', '2022-01-20 09:11:57'),
-(2, 'Test Public Notice', 'This is for Testing\r\n', '2022-02-02 19:04:10');
+(2, 'Test Public Announcement', 'This is for Testing\r\n', '2022-02-02 19:04:10');
 
 -- --------------------------------------------------------
 

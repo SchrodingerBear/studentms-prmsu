@@ -79,7 +79,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                         placeholder="Search" class="form-control mb-4 mt-4">
 
                       <!-- Table Structure -->
-                      <table class="table" id="table">
+                      <table class="table table-responsive" id="table">
                         <thead>
                           <tr>
                             <th class="font-weight-bold"> No</th>

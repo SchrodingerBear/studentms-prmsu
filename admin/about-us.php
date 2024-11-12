@@ -102,7 +102,7 @@ if (strlen($_SESSION['sturecmsaid']) == 0) {
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title" style="text-align: center;">Update About Us</h4>
+                                    <h4 class="card-title" style="text-align: center;">Update About </h4>
                                     <form class="forms-sample" method="post">
                                         <?php
                                         // Fetch existing data
@@ -118,8 +118,8 @@ if (strlen($_SESSION['sturecmsaid']) == 0) {
                                                     <input type="text" name="pagetitle" value="<?php echo htmlentities($row->PageTitle); ?>" class="form-control" required='true'>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="pagedes">Page Description:</label>
-                                                    <textarea id="pagedes" name="pagedes" class="form-control" required='true'><?php echo htmlentities($row->PageDescription); ?></textarea>
+                                                    <label for="pagedes">Page Address:</label>
+                                                    <textarea id="pagedes" name="pagedes" class="form-control" required='true'><?php echo htmlentities($row->Address); ?></textarea>
                                                 </div>
                                             <?php }
                                         } else {

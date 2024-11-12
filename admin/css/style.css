@@ -2256,6 +2256,24 @@ pre {
   margin-right: auto;
   margin-left: auto; }
 
+@media (max-width: 768px) {
+  .card .card-body {
+    padding: 0.5rem !important;
+  }
+
+  .content-wrapper {
+    padding: 0 !important;
+  }
+
+  .navbar .navbar-brand-wrapper {
+    width: 75% !important;
+  }
+
+  .navbar .navbar-brand-wrapper .navbar-brand.brand-logo {
+    display: block !important;
+  }
+}
+
 @media (min-width: 576px) {
   .container, .container-sm {
     max-width: 540px; } }

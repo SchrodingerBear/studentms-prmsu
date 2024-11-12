@@ -68,7 +68,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                       <input style="border: 2px #a5a5a5 solid;" type="text" id="searchInput" onkeyup="filterTable()"
                         placeholder="Search" class="form-control mb-4 mt-4">
 
-                      <table class="table" id="table">
+                      <table class="table table-responsive" id="table">
                         <thead>
                           <tr>
                             <th class="font-weight-bold">Violation Type</th>

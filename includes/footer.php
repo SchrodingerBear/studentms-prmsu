@@ -20,16 +20,16 @@
   <!-- container -->
   <div class="container">
     <div class="copyright-left">
-      <p>© <?php echo date('Y'); ?>WEB-BASE STUDENT HANDBOOK ASSISTANCE FOR PRMSU STA.CRUZ CAMPUS </p>
+      <p>© <?php echo date('Y'); ?> WEB-BASE STUDENT HANDBOOK ASSISTANCE FOR PRMSU STA.CRUZ CAMPUS </p>
     </div>
     <div class="copyright-right">
       <ul>
-        <li><a href="#" class="twitter"> </a></li>
-        <li><a href="#" class="twitter facebook"> </a></li>
-        <li><a href="#" class="twitter chrome"> </a></li>
-        <li><a href="#" class="twitter pinterest"> </a></li>
-        <li><a href="#" class="twitter linkedin"> </a></li>
-        <li><a href="#" class="twitter dribbble"> </a></li>
+        <li><a href="#" class=""> </a></li>
+        <li><a href="#" class=""> </a></li>
+        <li><a href="#" class=""> </a></li>
+        <li><a href="#" class=""> </a></li>
+        <li><a href="#" class=""> </a></li>
+        <li><a href="#" class=""> </a></li>
       </ul>
     </div>
     <div class="clearfix"> </div>
@@ -49,7 +49,5 @@
       */
       $().UItoTop({ easingType: 'easeOutQuart' });
     });
-  </script>
-  <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-  <!---->
+ 
 </div>

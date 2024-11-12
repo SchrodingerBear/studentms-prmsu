@@ -91,7 +91,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title" style="text-align: center;">Add Violations</h4>
+                  <h4 class="card-title" style="text-align: center;">Add Student Violations</h4>
                   <form id="add-violation-form" class="forms-sample">
                     <div class="form-group">
                       <label for="student_id">Student Name</label>

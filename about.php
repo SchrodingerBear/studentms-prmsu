@@ -7,12 +7,14 @@ include('includes/dbconnection.php');
 <html>
 
 <head>
-    <link rel="icon" href="../images/logo.png" type="image/png">
-    <title>STUDENT HANDBOOK ASSISTANCE | About Us Page</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../images/logo.png" type="image/png">
+  <title>STUDENT HANDBOOK ASSISTANCE | About Us Page</title>
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="js/bootstrap.js"></script>
 </head>
 
 <body>
@@ -33,8 +35,8 @@ include('includes/dbconnection.php');
                         <h2 style="color: #fff; font-size: 40px;"><?php echo htmlentities($row->PageTitle); ?></h2>
                         <div class="about-info-grids">
                             <div class="col-md-12 abt-info-pic">
-                                <!-- Display Page Description with HTML rendering -->
-                                <p><?php echo html_entity_decode($row->PageDescription); ?></p>
+                                <!-- Display Addresswith HTML rendering -->
+                                <p><?php echo html_entity_decode($row->Address); ?></p>
                             </div>
                             <div class="clearfix"></div>
                         </div>

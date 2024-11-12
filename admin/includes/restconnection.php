@@ -1,10 +1,10 @@
 <?php 
 date_default_timezone_set('Asia/Manila');
   // DB credentials.
-  define('DB_HOST', 'localhost');
-  define('DB_USER', 'root');
-  define('DB_PASS', '');
-  define('DB_NAME', 'studentmsdb');
+define('DB_HOST','localhost');
+define('DB_USER','u894050821_prmsu');
+define('DB_PASS','@Di4$AY|');
+define('DB_NAME','u894050821_prmsu');
 
   // Establish database connection.
   $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);

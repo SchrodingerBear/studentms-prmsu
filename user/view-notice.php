@@ -11,10 +11,11 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
   <html lang="en">
 
   <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/logo.png" type="image/png">
     <link rel="icon" href="../images/logo.png" type="image/png">
-    <title>STUDENT HANDBOOK ASSISTANCE | View Notice</title>
+    <title>STUDENT HANDBOOK ASSISTANCE | View Announcement</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -43,7 +44,7 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
         <div class="main-panel">
           <div class="content-wrapper"style="background-color: #c71d68;">
             <div class="page-header">
-              <h3 class="page-title" style="color: white;"> View Student Handbook </h3>
+              <h3 class="page-title" style="color: white;"> View Class Announcementcement </h3>
 
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -61,7 +62,7 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                       <?php
                       $stuclass = $_SESSION['stuclass'];
 
-                      $sql = "SELECT tblclass.ID,tblclass.ClassName,tblclass.Section,tblnotice.NoticeTitle,tblnotice.CreationDate,tblnotice.ClassId,tblnotice.NoticeMsg,tblnotice.ID as nid from tblnotice join tblclass on tblclass.ID=tblnotice.ClassId where tblnotice.ClassId=:stuclass";
+                      $sql = "SELECT tblclass.ID,tblclass.ClassName,tblclass.Section,tblnotice.AnnouncementTitle,tblnotice.CreationDate,tblnotice.ClassId,tblnotice.AnnouncementMsg,tblnotice.ID as nid from tblnotice join tblclass on tblclass.ID=tblnotice.ClassId where tblnotice.ClassId=:stuclass";
                       $query = $dbh->prepare($sql);
                       $query->bindParam(':stuclass', $stuclass, PDO::PARAM_STR);
                       $query->execute();
@@ -71,19 +72,19 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                         foreach ($results as $row) { ?>
                           <tr align="center" class="table-warning">
                             <td colspan="4" style="font-size:25px;color:#1c82e6;">
-                              Notice</td>
+                              Announcementcement</td>
                           </tr>
                           <tr class="table-info">
                             <th>Announced Date</th>
                             <td><?php echo $row->CreationDate; ?></td>
                           </tr>
                           <tr class="table-info">
-                            <th>Notice Title</th>
-                            <td><?php echo $row->NoticeTitle; ?></td>
+                            <th>Announcementcement Title</th>
+                            <td><?php echo $row->AnnouncementTitle; ?></td>
                           </tr>
                           <tr class="table-info">
                             <th>Message</th>
-                            <td><?php echo $row->NoticeMsg; ?></td>
+                            <td><?php echo $row->AnnouncementMsg; ?></td>
 
                           </tr>
 
@@ -91,7 +92,7 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                         }
                       } else { ?>
                         <tr>
-                          <th colspan="2" style="color:red;">No Notice Found</th>
+                          <th colspan="2" style="color:red;">No Announcementcement Found</th>
                         </tr>
                       <?php } ?>
                     </table>

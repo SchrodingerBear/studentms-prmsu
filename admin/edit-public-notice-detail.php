@@ -9,7 +9,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     $nottitle = $_POST['nottitle'];
     $notmsg = $_POST['notmsg'];
     $eid = $_GET['editid'];
-    $sql = "update tblpublicnotice set NoticeTitle=:nottitle,NoticeMessage=:notmsg where ID=:eid";
+    $sql = "update tblpublicnotice set AnnouncementTitle=:nottitle,AnnouncementMessage=:notmsg where ID=:eid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':nottitle', $nottitle, PDO::PARAM_STR);
     $query->bindParam(':notmsg', $notmsg, PDO::PARAM_STR);
@@ -22,7 +22,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
         <div class='toast-container position-fixed top-0 start-50 translate-middle-x p-3'>
             <div id='updateToast' class='toast' role='alert' aria-live='assertive' aria-atomic='true' style='background-color: #1c82e6; color: white;'>
                 <div class='toast-body'>
-                    Notice has been successfully updated.
+                    Announcementcement has been successfully updated.
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     <head>
 
       <link rel="icon" href="../images/logo.png" type="image/png">
-      <title>STUDENT HANDBOOK ASSISTANCE | Update Notice</title>
+      <title>STUDENT HANDBOOK ASSISTANCE | Update Announcementcement</title>
       <!-- plugins:css -->
       <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
       <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -81,7 +81,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                 <div class="col-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title" style="text-align: center;">Update Public Notice</h4>
+                      <h4 class="card-title" style="text-align: center;">Update Public Announcementcement</h4>
 
                       <form class="forms-sample" method="post" enctype="multipart/form-data">
                         <?php
@@ -95,13 +95,13 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                         if ($query->rowCount() > 0) {
                           foreach ($results as $row) { ?>
                                 <div class="form-group">
-                                  <label for="exampleInputName1">Notice Title</label>
-                                  <input type="text" name="nottitle" value="<?php echo htmlentities($row->NoticeTitle); ?>"
+                                  <label for="exampleInputName1">Announcementcement Title</label>
+                                  <input type="text" name="nottitle" value="<?php echo htmlentities($row->AnnouncementTitle); ?>"
                                     class="form-control custom-input" required style="border: 1px solid #acb7c2;">
                                 </div>
                                 <div class="form-group">
-                                  <label for="exampleInputName1">Notice Message</label>
-                                  <textarea name="notmsg" value="" class="form-control custom-input" required style="border: 1px solid #acb7c2;"><?php echo htmlentities($row->NoticeMessage); ?></textarea>
+                                  <label for="exampleInputName1">Announcementcement Message</label>
+                                  <textarea name="notmsg" value="" class="form-control custom-input" required style="border: 1px solid #acb7c2;"><?php echo htmlentities($row->AnnouncementMessage); ?></textarea>
                                 </div>
                                 <?php $cnt = $cnt + 1;
                           }

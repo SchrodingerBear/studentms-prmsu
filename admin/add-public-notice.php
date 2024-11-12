@@ -9,15 +9,15 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     $nottitle = $_POST['nottitle'];
 
     $notmsg = $_POST['notmsg'];
-    $sql = "insert into tblpublicnotice(NoticeTitle,NoticeMessage)values(:nottitle,:notmsg)";
+    $sql = "insert into tblpublicnotice(AnnouncementTitle,AnnouncementMessage)values(:nottitle,:notmsg)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':nottitle', $nottitle, PDO::PARAM_STR);
     $query->bindParam(':notmsg', $notmsg, PDO::PARAM_STR);
     $query->execute();
     $LastInsertId = $dbh->lastInsertId();
     if ($LastInsertId > 0) {
-      echo '<script>alert("Notice has been added.")</script>';
-      echo "<script>window.location.href ='add-public-notice.php'</script>";
+      echo '<script>alert("Announcementcement has been added.")</script>';
+      echo "<script>window.location.href ='add-public-Announcement.php'</script>";
     } else {
       echo '<script>alert("Something Went Wrong. Please try again")</script>';
     }
@@ -29,7 +29,7 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
     <head>
 
       <link rel="icon" href="../images/logo.png" type="image/png">
-      <title>STUDENT HANDBOOK ASSISTANCE | Add Notice</title>
+      <title>STUDENT HANDBOOK ASSISTANCE | Add Announcementcement</title>
       <!-- plugins:css -->
       <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
       <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -70,16 +70,16 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
                 <div class="col-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title" style="text-align: center;">Add Public Notice</h4>
+                      <h4 class="card-title" style="text-align: center;">Add Public Announcementcement</h4>
 
                       <form class="forms-sample" method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
-                          <label for="exampleInputName1">Notice Title</label>
+                          <label for="exampleInputName1">Announcementcement Title</label>
                           <input type="text" name="nottitle" value="" class="form-control custom-input" required style="border: 1px solid #acb7c2;">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputName1">Notice Message</label>
+                          <label for="exampleInputName1">Announcementcement Message</label>
                           <textarea name="notmsg" value="" class="form-control custom-input" required style="border: 1px solid #acb7c2;"></textarea>
                         </div>
 

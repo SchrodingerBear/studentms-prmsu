@@ -1,9 +1,20 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="background-color: #FED365;">
   <div class="navbar-brand-wrapper d-flex align-items-center"style="background-color: #2f3d58;">
     <a class="navbar-brand brand-logo" href="dashboard.php">
-      <strong style="color: white;">SHA | PRMSU</strong>
+         <strong style="color: white; display: block; font-size: 25px; line-height: 1; font-weight: bold;">
+  WBSHA | PRMSU
+</strong>
+<span style="display: block; font-size: 25px; color: white; margin-top: 0px; padding-left: 45px; padding-right: 1px; font-weight: bold;">
+  STA. CRUZ
+</span>
+
+      </strong>
     </a>
-    <a class="navbar-brand brand-logo-mini" href="dashboard.php"><img src="images/logo-mini.svg" alt="logo" /></a>
   </div><?php
   $aid = $_SESSION['sturecmsaid'];
   $sql = "SELECT * from tbladmin where ID=:aid";

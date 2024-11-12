@@ -48,7 +48,7 @@ include('includes/dbconnection.php');
 	<?php include_once('includes/header.php'); ?>
 	<div class="banner banner5">
 		<div class="container">
-			<h2>Notice</h2>
+			<h2>Announcement</h2>
 		</div>
 	</div>
 	<!--weelcome-->
@@ -65,25 +65,25 @@ include('includes/dbconnection.php');
 				$cnt = 1;
 				if ($query->rowCount() > 0) {
 					foreach ($results as $row) { ?>
-								<tr align="center" class="table-warning">
-									<td colspan="4" style="font-size:24px; font-weight: 500;">
-										Notice</td>
-								</tr>
-								<tr class="table-info">
-									<th>Announced Date</th>
-									<td><?php echo $row->CreationDate; ?></td>
-								</tr>
-								<tr class="table-info">
-									<th>Notice Title</th>
-									<td><?php echo $row->NoticeTitle; ?></td>
-								</tr>
-								<tr class="table-info">
-									<th>Message</th>
-									<td><?php echo $row->NoticeMessage; ?></td>
+						<tr align="center" class="table-warning">
+							<td colspan="4" style="font-size:24px; font-weight: 500;">
+								Announcement</td>
+						</tr>
+						<tr class="table-info">
+							<th>Announced Date</th>
+							<td><?php echo $row->CreationDate; ?></td>
+						</tr>
+						<tr class="table-info">
+							<th>Announcement Title</th>
+							<td><?php echo $row->AnnouncementTitle; ?></td>
+						</tr>
+						<tr class="table-info">
+							<th>Message</th>
+							<td><?php echo $row->AnnouncementMessage; ?></td>
 
-								</tr>
+						</tr>
 
-								<?php $cnt = $cnt + 1;
+						<?php $cnt = $cnt + 1;
 					}
 				} ?>
 			</table>

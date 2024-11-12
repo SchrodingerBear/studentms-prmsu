@@ -111,13 +111,10 @@ if (strlen($_SESSION['sturecmsaid'] == 0)) {
 </div>
 
                                      <h3 style="margin-top: 20px; color: #1c82e6;">Guardian's Details</h3>
-                                        <div class="form-group">
-                                            <label for="exampleInputName1">Father's Name</label>
-                                            <input type="text" name="fname" id="fname" value="" class="form-control custom-input">
-                                        </div>
+                                        
 
                                         <div class="form-group">
-                                            <label for="exampleInputName1">Mother's Name</label>
+                                            <label for="exampleInputName1">Guardian's Name</label>
                                             <input type="text" name="mname" id="mname" value="" class="form-control custom-input">
                                         </div>
 
@@ -313,4 +310,4 @@ textarea.custom-input {
 </body>
 
 </html>
-<?php } ?>
+<?php } ?>  

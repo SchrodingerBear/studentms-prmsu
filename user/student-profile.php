@@ -10,7 +10,8 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
   <html lang="en">
 
   <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/logo.png" type="image/png">
     <title>STUDENT HANDBOOK ASSISTANCE | View Students Profile</title>
     <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
@@ -18,10 +19,11 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="vendors/select2/select2.min.css">
     <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="https://stackpath.bootstrapcdn.co/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
   </head>
+
+
 
   <body>
     <div class="container-scroller">
@@ -43,8 +45,88 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <table border="1" class="table table-bordered mg-b-0">
-                      <!-- Placeholder for student profile details -->
+                  <div class="table-responsive">
+  <table class="table table-bordered mg-b-0">
+    <div id="student-profile-content"></div>
+
+    <?php
+    $sid = $_SESSION['sturecmsstuid'];
+    $sql = "SELECT tblstudent.StudentName, tblstudent.StudentEmail, tblstudent.StudentClass, tblstudent.Gender, tblstudent.DOB, tblstudent.StuID, tblstudent.FatherName, tblstudent.MotherName, tblstudent.ContactNumber, tblstudent.AltenateNumber, tblstudent.Address, tblstudent.UserName, tblstudent.Password, tblstudent.Image, tblstudent.DateofAdmission, tblclass.ClassName, tblclass.Section 
+        FROM tblstudent 
+        JOIN tblclass ON tblclass.ID = tblstudent.StudentClass 
+        WHERE tblstudent.StuID = :sid";
+
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':sid', $sid, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    if ($query->rowCount() > 0) {
+      foreach ($results as $row) { ?>
+        <tr align="center" class="table-warning">
+          <td colspan="4" class="text-center" style="font-size:30px;color:#1c82e6;">Student Details</td>
+        </tr>
+
+        <tr class="table-info">
+          <th class="d-block d-md-table-cell">Student Name</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->StudentName; ?></td>
+          <th class="d-block d-md-table-cell">Student Email</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->StudentEmail; ?></td>
+        </tr>
+        <tr class="table-warning">
+          <th class="d-block d-md-table-cell">Student Class</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->ClassName . ' ' . $row->Section; ?></td>
+          <th class="d-block d-md-table-cell">Gender</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->Gender; ?></td>
+        </tr>
+        <tr class="table-danger">
+          <th class="d-block d-md-table-cell">Date of Birth</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->DOB; ?></td>
+          <th class="d-block d-md-table-cell">Student ID</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->StuID; ?></td>
+        </tr>
+        <tr class="table-success">
+             <th class="d-block d-md-table-cell">Student Contact Number</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->AltenateNumber; ?></td>
+          <th class="d-block d-md-table-cell"></th>
+        
+                 </tr>
+        <tr class="table-primary">
+          <th class="d-block d-md-table-cell">Guardian's Name</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->MotherName; ?></td>
+           <th class="d-block d-md-table-cell">Contact Number</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->ContactNumber; ?></td>
+        </tr>
+        <tr class="table-progress">
+          <th class="d-block d-md-table-cell">Address</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->Address; ?></td>
+          <th class="d-block d-md-table-cell">User Name</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->UserName; ?></td>
+        </tr>
+        <tr class="table-info">
+          <th class="d-block d-md-table-cell">Profile Image</th>
+          <td class="d-block d-md-table-cell"><img src="../<?php echo $row->Image; ?>" alt="Student Image" width="100" height="100"></td>
+          <th class="d-block d-md-table-cell">Date of Admission</th>
+          <td class="d-block d-md-table-cell"><?php echo $row->DateofAdmission; ?></td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-center">
+            <button class="btn custom-add-btn" data-toggle="modal" data-target="#editModal"
+              data-id="<?php echo $row->StuID; ?>" data-name="<?php echo $row->StudentName; ?>"
+              data-email="<?php echo $row->StudentEmail; ?>" data-class="<?php echo $row->StudentClass; ?>"
+              data-gender="<?php echo $row->Gender; ?>" data-dob="<?php echo $row->DOB; ?>"
+              data-father="<?php echo $row->FatherName; ?>" data-mother="<?php echo $row->MotherName; ?>"
+              data-contact="<?php echo $row->ContactNumber; ?>"
+              data-alternate="<?php echo $row->AltenateNumber; ?>"
+              data-address="<?php echo $row->Address; ?>" data-username="<?php echo $row->UserName; ?>"
+              data-dateofadmission="<?php echo $row->DateofAdmission; ?>">Edit Profile</button>
+          </td>
+        </tr>
+      <?php }
+    }
+    ?>
+  </table>
+</div>
+                    <!-- <table class="table-responsive table table-bordered mg-b-0">
                       <div id="student-profile-content">
                       </div>
 
@@ -112,7 +194,7 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                           </tr>
                           <tr>
                             <td colspan="4" class="text-center">
-                              <button class="btn btn-primary" data-toggle="modal" data-target="#editModal"
+                              <button class="btn custom-add-btn" data-toggle="modal" data-target="#editModal"
                                 data-id="<?php echo $row->StuID; ?>" data-name="<?php echo $row->StudentName; ?>"
                                 data-email="<?php echo $row->StudentEmail; ?>" data-class="<?php echo $row->StudentClass; ?>"
                                 data-gender="<?php echo $row->Gender; ?>" data-dob="<?php echo $row->DOB; ?>"
@@ -121,13 +203,14 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                                 data-alternate="<?php echo $row->AltenateNumber; ?>"
                                 data-address="<?php echo $row->Address; ?>" data-username="<?php echo $row->UserName; ?>"
                                 data-dateofadmission="<?php echo $row->DateofAdmission; ?>">Edit Profile</button>
+                                
                             </td>
                           </tr>
                           <?php
                         }
                       }
                       ?>
-                    </table>
+                    </table> -->
 
                   </div>
                 </div>
@@ -195,13 +278,9 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                       <input type="date" class="form-control custom-input" id="dob" name="dob"
                         value="<?php echo htmlspecialchars($row->DOB); ?>" required>
                     </div>
+                   
                     <div class="form-group">
-                      <label for="fatherName">Father Name</label>
-                      <input type="text" class="form-control custom-input" id="fatherName" name="fatherName"
-                        value="<?php echo htmlspecialchars($row->FatherName); ?>" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="motherName">Mother Name</label>
+                      <label for="motherName">Guardian's Name</label>
                       <input type="text" class="form-control custom-input" id="motherName" name="motherName"
                         value="<?php echo htmlspecialchars($row->MotherName); ?>" required>
                     </div>
@@ -222,7 +301,8 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
                     </div>
 
                     <input type="hidden" name="studentId" value="<?php echo htmlspecialchars($row->StuID); ?>">
-                    <button type="submit" class="btn btn-success">Save changes</button>
+                    
+                     <button type="submit" name="submit" class="custom-add-btn">Save changes</button>
                   </form>
                 </div>
               </div>
@@ -301,7 +381,58 @@ if (strlen($_SESSION['sturecmsstuid'] == 0)) {
       .form-group {
         margin-bottom: 20px;
       }
+      
+      
+       .custom-add-btn {
+                background-color: #1c82e6;
+                color: #fff;
+                border: none;
+                padding: 10px 30px;
+                border-radius: 30px;
+                font-weight: bold;
+                font-size: 16px;
+                transition: background-color 0.3s ease;
+            }
+
+            .custom-add-btn:hover {
+                background-color: #155ba0;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            /* Add spacing below each form group for consistency */
+            .form-group {
+                margin-bottom: 20px;
+            }
     </style>
+    
+    
+    
+    <script>
+      $(document).ready(function(){
+        $('#contactNumber, #altenateNumber').keypress(function(event) {
+            var charCode = event.which;
+            // Allow only numbers (0-9)
+            if (charCode >= 48 && charCode <= 57) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        $('#studentName, #fatherName, #motherName').keypress(function(event) {
+            var charCode = event.which;
+            // Allow A-Z, a-z and space (charCode 32)
+            if ((charCode >= 65 && charCode <= 90) || 
+                (charCode >= 97 && charCode <= 122) || 
+                charCode == 32) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+      })
+    </script>
   </body>
 
   </html>

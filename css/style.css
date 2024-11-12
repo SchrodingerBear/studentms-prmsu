@@ -41,19 +41,7 @@ ul{
 	margin:0;
 	padding:0;
 }
-.navbar-header {
-    width: 17%;
-    float: left;
-}
-.navbar-header h1 {
-    margin: 0;
-    font-size: .95em;
-    display: block;
-}
-div#bs-example-navbar-collapse-1 {
-    width: 76%;
-    float: left;
-}
+
 /*--header-nav--*/
 .header{
     background-color: #FED365;
@@ -1977,10 +1965,6 @@ ul.p_n-list li a:hover{
 	}
 }
 @media(max-width:640px){
-	.navbar-header {
-	    width: 43%;
-	    float: left;
-	}
 	.gallery {
 	    padding: 1.5em 0;
 	}
@@ -2022,11 +2006,7 @@ ul.p_n-list li a:hover{
 	    margin-left: 0;
 	    padding-top: 6px;
 	}
-	.navbar-toggle {
-	    margin-top: 13px;
-	        margin-right: -100px;
-	    margin-bottom: 0px;
-	}
+
 	.rslides {
 	    height: 350px;
 	}
@@ -2147,10 +2127,6 @@ ul.p_n-list li a:hover{
 	}
 }
 @media(max-width:480px){
-	.navbar-header {
-	    width: 56%;
-	    float: left;
-	}
 	.navbar-nav>li>a {
 	    font-size: 15px;
 	}
@@ -2172,9 +2148,6 @@ ul.p_n-list li a:hover{
 	.banner5 h2 {
 	       font-size: 2.1em;
     padding-top: 26px;
-	}
-	.navbar-toggle {
-	        margin-right: -42px;
 	}
 	div#bs-example-navbar-collapse-1 {
 	width: 23%;
